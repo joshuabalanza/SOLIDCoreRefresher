@@ -73,7 +73,7 @@ APICalculator/
 
 ```mermaid
 flowchart TD
-    Client["HTTP client"] -->|POST /api/Calculator/{calculatorType}<br/>SampleocpDTOs| Controller["CalculatorController"]
+    Client["HTTP client"] -->|"POST calculator request"| Controller["CalculatorController"]
     Controller -->|LaunchCalculator(type)| Selector["CalculatorProcess"]
     Selector -->|Find registered strategy| Strategy{"ICalculatorServices"}
     Strategy -->|BasicCalculator| BasicService["BasicCalculatorServices"]
