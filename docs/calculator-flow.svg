@@ -16,6 +16,7 @@
       .scientific { fill: #f3e8ff; }
       .result { fill: #fff4ce; }
       .edge { fill: none; stroke: #526581; stroke-width: 2.5; marker-end: url(#arrow); }
+      .connector { fill: none; stroke: #526581; stroke-width: 2.5; }
       .return { fill: none; stroke: #00875a; stroke-width: 2.5; marker-end: url(#arrow); }
       .edge-label { font-size: 12px; fill: #44546f; }
     </style>
@@ -75,8 +76,8 @@
   <rect x="488" y="680" width="224" height="22" fill="#ffffff"/>
   <text x="600" y="696" text-anchor="middle" class="edge-label">Delegates basic operations</text>
 
-  <path d="M300 662 V700 H600" class="edge"/>
-  <path d="M900 662 V700 H600" class="edge"/>
+  <path d="M300 662 V700 H600" class="connector"/>
+  <path d="M900 662 V700 H600" class="connector"/>
   <path d="M600 700 V718" class="edge"/>
   <rect x="435" y="720" width="330" height="62" class="node result"/>
   <text x="600" y="747" text-anchor="middle" class="label">Calculation result</text>
