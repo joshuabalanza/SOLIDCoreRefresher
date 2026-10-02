@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="870" viewBox="0 0 1200 870" role="img" aria-labelledby="title description">
+  <title id="title">Calculator API request flow</title>
+  <desc id="description">An HTTP request moves through the controller and calculator selector, then through either the basic or scientific service, app facade, and calculation process. The result returns through the controller to the client. The scientific process can delegate basic operations to the basic calculation process.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#526581"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #172b4d; }
+      .title { font-size: 25px; font-weight: 700; }
+      .label { font-size: 16px; font-weight: 600; }
+      .small { font-size: 13px; fill: #44546f; }
+      .node { stroke: #526581; stroke-width: 2; rx: 12; }
+      .common { fill: #e9f2ff; }
+      .basic { fill: #e3fcef; }
+      .scientific { fill: #f3e8ff; }
+      .result { fill: #fff4ce; }
+      .edge { fill: none; stroke: #526581; stroke-width: 2.5; marker-end: url(#arrow); }
+      .return { fill: none; stroke: #00875a; stroke-width: 2.5; marker-end: url(#arrow); }
+      .edge-label { font-size: 12px; fill: #44546f; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="870" fill="#ffffff"/>
+  <text x="600" y="38" text-anchor="middle" class="title">Calculator API request flow</text>
+
+  <rect x="435" y="65" width="330" height="62" class="node common"/>
+  <text x="600" y="92" text-anchor="middle" class="label">HTTP client</text>
+  <text x="600" y="113" text-anchor="middle" class="small">POST /api/Calculator/{calculatorType}</text>
+
+  <rect x="435" y="170" width="330" height="62" class="node common"/>
+  <text x="600" y="197" text-anchor="middle" class="label">CalculatorController</text>
+  <text x="600" y="218" text-anchor="middle" class="small">Accept request; return response</text>
+
+  <rect x="435" y="275" width="330" height="62" class="node common"/>
+  <text x="600" y="302" text-anchor="middle" class="label">CalculatorProcess</text>
+  <text x="600" y="323" text-anchor="middle" class="small">Select strategy by calculator type</text>
+
+  <path d="M600 127 V168" class="edge"/>
+  <path d="M600 232 V273" class="edge"/>
+  <path d="M600 337 V365 H300 V390" class="edge"/>
+  <path d="M600 365 H900 V390" class="edge"/>
+
+  <rect x="120" y="390" width="360" height="62" class="node basic"/>
+  <text x="300" y="417" text-anchor="middle" class="label">BasicCalculatorServices</text>
+  <text x="300" y="438" text-anchor="middle" class="small">ICalculatorServices strategy</text>
+
+  <rect x="720" y="390" width="360" height="62" class="node scientific"/>
+  <text x="900" y="417" text-anchor="middle" class="label">ScientificCalculatorServices</text>
+  <text x="900" y="438" text-anchor="middle" class="small">ICalculatorServices strategy</text>
+
+  <path d="M300 452 V493" class="edge"/>
+  <path d="M900 452 V493" class="edge"/>
+
+  <rect x="120" y="495" width="360" height="62" class="node basic"/>
+  <text x="300" y="522" text-anchor="middle" class="label">BasicCalculator</text>
+  <text x="300" y="543" text-anchor="middle" class="small">App facade</text>
+
+  <rect x="720" y="495" width="360" height="62" class="node scientific"/>
+  <text x="900" y="522" text-anchor="middle" class="label">ScientificCalculator</text>
+  <text x="900" y="543" text-anchor="middle" class="small">App facade</text>
+
+  <path d="M300 557 V598" class="edge"/>
+  <path d="M900 557 V598" class="edge"/>
+
+  <rect x="120" y="600" width="360" height="62" class="node basic"/>
+  <text x="300" y="627" text-anchor="middle" class="label">BasicCalculationProcess</text>
+  <text x="300" y="648" text-anchor="middle" class="small">Add, Subtract, Multiply, Divide</text>
+
+  <rect x="720" y="600" width="360" height="62" class="node scientific"/>
+  <text x="900" y="627" text-anchor="middle" class="label">ScientificCalculationProcess</text>
+  <text x="900" y="648" text-anchor="middle" class="small">Power, SquareRoot, Logarithm</text>
+
+  <path d="M900 662 V695 H300 V664" class="edge"/>
+  <rect x="488" y="680" width="224" height="22" fill="#ffffff"/>
+  <text x="600" y="696" text-anchor="middle" class="edge-label">Delegates basic operations</text>
+
+  <path d="M300 662 V700 H600" class="edge"/>
+  <path d="M900 662 V700 H600" class="edge"/>
+  <path d="M600 700 V718" class="edge"/>
+  <rect x="435" y="720" width="330" height="62" class="node result"/>
+  <text x="600" y="747" text-anchor="middle" class="label">Calculation result</text>
+  <text x="600" y="768" text-anchor="middle" class="small">decimal returned through the controller</text>
+
+  <path d="M600 782 V816 H1135 V201 H767" class="return"/>
+  <text x="1000" y="807" text-anchor="middle" class="edge-label">HTTP response</text>
+</svg>

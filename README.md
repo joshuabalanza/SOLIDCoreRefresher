@@ -71,20 +71,4 @@ APICalculator/
 
 ## Request flow
 
-```mermaid
-flowchart TD
-    Client["HTTP client"] -->|"POST calculator request"| Controller["CalculatorController"]
-    Controller -->|LaunchCalculator(type)| Selector["CalculatorProcess"]
-    Selector -->|Find registered strategy| Strategy{"ICalculatorServices"}
-    Strategy -->|BasicCalculator| BasicService["BasicCalculatorServices"]
-    Strategy -->|ScientificCalculator| ScientificService["ScientificCalculatorServices"]
-    BasicService --> BasicApp["BasicCalculator"]
-    ScientificService --> ScientificApp["ScientificCalculator"]
-    BasicApp --> BasicProcess["BasicCalculationProcess"]
-    ScientificApp --> ScientificProcess["ScientificCalculationProcess"]
-    ScientificProcess -->|Fallback for basic operations| BasicProcess
-    BasicProcess --> Result["decimal result"]
-    ScientificProcess --> Result
-    Result --> Controller
-    Controller -->|HTTP response| Client
-```
+![Calculator request and response flow](docs/calculator-flow.svg)
