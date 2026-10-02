@@ -1,2 +1,13 @@
 /.DS_Store
 /.vscode
+
+# Build output
+[Bb]in/
+[Oo]bj/
+[Aa]rtifacts/
+[Tt]est[Rr]esults/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
