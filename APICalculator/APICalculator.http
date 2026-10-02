@@ -1,0 +1,6 @@
+@ECPayTechAssessment_HostAddress = http://localhost:5291
+
+GET {{ECPayTechAssessment_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
