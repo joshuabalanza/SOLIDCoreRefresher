@@ -1,11 +1,18 @@
 /.DS_Store
 /.vscode
 
-# Build output
-[Bb]in/
+# Build output (NuGet package binaries in bin/ stay tracked; project-generated files are ignored)
 [Oo]bj/
+**/[Bb]in/**/APICalculator
+**/[Bb]in/**/APICalculator.*
+**/[Bb]in/**/ECPayTechAssessment
+**/[Bb]in/**/ECPayTechAssessment.*
 [Aa]rtifacts/
 [Tt]est[Rr]esults/
+
+# App settings
+appsettings*.json
+!appsettings.example.json
 
 # Visual Studio
 .vs/
