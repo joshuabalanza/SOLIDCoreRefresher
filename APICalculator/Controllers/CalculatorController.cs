@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using APICalculator.DTOs;
 using APICalculator.Process.Interfaces;
 using Mapster;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace APICalculator.Controllers
 {
@@ -28,11 +29,15 @@ namespace APICalculator.Controllers
             {
                 var calculate = _calculatorProcess.LaunchCalculator(calculatorType);
                 SampleocpResult total = new SampleocpResult(calculate.Calculate(sampleValue));
-                return Ok(total.Adapt<SampleocpDTOs>());
+                return Ok(total.Adapt<SampleocpResult>());
             }
-            catch (ArgumentException ex)
+            catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                StatusDTO status = new StatusDTO(
+                    StatusMessage: ex?.Message ?? "Unexpected error occurred.",
+                    StatusCode: 400
+                );
+                return BadRequest(status);
             }
 
         }

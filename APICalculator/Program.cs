@@ -1,4 +1,5 @@
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.OpenApi;
+using Scalar.AspNetCore;
 using APICalculator.App.Interfaces;
 using APICalculator.App.Implementation;
 using APICalculator.Services.Implementation;
@@ -24,17 +25,27 @@ builder.Services.AddScoped<IScientificCalculationProcess, ScientificCalculationP
 builder.Services.AddControllers();
 
 
-builder.Services.AddSwaggerGen();
+//builder.Services.AddSwaggerGen();
+
+builder.Services.AddOpenApi();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
+    // app.UseSwagger();
+    // app.UseSwaggerUI(options =>
+    // {
+    //     options.SwaggerEndpoint("/swagger/v1/swagger.json", "C# Refresher API v1");
+    //     options.RoutePrefix = string.Empty;  // ← Swagger at root path
+    // });
+
+    app.MapOpenApi();
+    app.MapScalarApiReference("/", options =>
     {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "C# Refresher API v1");
-        options.RoutePrefix = string.Empty;  // ← Swagger at root path
+        // Optional: Configure your Scalar options here if needed
+        options.WithTitle("C# Refresher API v1").WithOpenApiRoutePattern("/openapi/v1.json");
     });
 }
 

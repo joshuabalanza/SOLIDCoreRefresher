@@ -9,3 +9,8 @@ public record SampleocpDTOs(
 public record SampleocpResult(
     decimal Total
 );
+
+public record StatusDTO(
+    string StatusMessage,
+    int StatusCode
+);

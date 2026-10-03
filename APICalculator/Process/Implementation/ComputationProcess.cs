@@ -22,7 +22,7 @@ namespace APICalculator.Process.Implementation
                     // Example basic calculation: division
                     return sampleocpDTOs.sampleValue1 / sampleocpDTOs.sampleValue2;
                 default:
-                    throw new InvalidOperationException("Invalid operation type");
+                    throw new Exception($"Invalid operation type: {sampleocpDTOs.operationType}");
             }
         }
     }
