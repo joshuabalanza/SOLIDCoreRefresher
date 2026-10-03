@@ -8,7 +8,13 @@ A small ASP.NET Core Web API project for practicing SOLID-oriented design. The A
 
 ## Run the API
 
-From the repository root:
+The `appsettings*.json` files are not tracked in git. Create your local settings from the example first:
+
+```sh
+cp APICalculator/appsettings.example.json APICalculator/appsettings.json
+```
+
+Then, from the repository root:
 
 ```sh
 dotnet run --project APICalculator/APICalculator.csproj
