@@ -20,7 +20,7 @@ Then, from the repository root:
 dotnet run --project APICalculator/APICalculator.csproj
 ```
 
-In Development, Swagger UI is available at the application root. The API endpoint is:
+In Development, the [Scalar](https://scalar.com/) API reference is available at the application root (`http://localhost:5291/`) and the OpenAPI document at `/openapi/v1.json`. The API endpoint is:
 
 ```text
 POST /api/Calculator/{calculatorType}
@@ -61,7 +61,7 @@ APICalculator/
 ├── Services/
 │   ├── Implementation/       # Calculator-type strategies/adapters
 │   └── Interfaces/           # Calculator strategy contract
-├── Program.cs                # Dependency injection and HTTP pipeline setup
+├── Program.cs                # Dependency injection, OpenAPI/Scalar and HTTP pipeline setup
 └── APICalculator.csproj      # Target framework and package references
 ```
 
